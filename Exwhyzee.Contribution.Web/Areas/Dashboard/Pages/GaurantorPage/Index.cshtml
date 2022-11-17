@@ -1,0 +1,105 @@
+﻿@page
+@model Exwhyzee.Contribution.Web.Areas.Dashboard.Pages.GaurantorPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">GAURANTORS</h3>
+        @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin")){*@
+
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Gaurantor</a>
+        @* } *@
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Account
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GaurantorAccount[0].Appoved)
+                        </th>
+                        <th>
+                            Gaurantor Signed
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GaurantorAccount[0].Gaurantor)
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>                @{
+                    int sn = 0;
+                }
+
+                <tbody>
+                    @foreach (var item in Model.GaurantorAccount)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                           
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                    @Html.DisplayFor(modelItem => item.Profile.Fullname)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Appoved)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GaurantorSigned)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gaurantor.Fullname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GurantorStatus)
+                            </td>
+
+                            @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {*@
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">Action</button>
+
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                        </button>
+                                        <div class="dropdown-menu" style="">
+
+                                            <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                            @*<a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>*@
+                                            @*<a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            @*}*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

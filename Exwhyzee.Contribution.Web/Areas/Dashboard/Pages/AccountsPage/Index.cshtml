@@ -1,0 +1,100 @@
+﻿@page
+@model Exwhyzee.Contribution.Web.Areas.Dashboard.Pages.AccountsPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">ACCOUNTS</h3>
+        @*@if (User.Identity.IsAuthenticated && User.IsInRole("Admin")){*@
+
+        <a asp-page="./Create" class="btn bg-gradient-warning btn-sm" style="float:right;">Add New Contributor</a>
+       @* } *@</div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>File NO.</th>
+                        <th>IPPIS NO.
+</th>
+                        <th>
+                            FULLNAME
+                        </th>
+                      
+                        <th>
+                            PHONE
+                        </th>
+                        <th>
+                            EMAIL
+                        </th>
+                        <th>Status</th>
+                        <th></th>
+                       @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")){<th></th>}
+                    </tr>
+                </thead>
+                @{int sn = 0;}
+                <tbody>
+                    @foreach (var item in Model.Profile)
+                    {
+                        <tr>
+                            <td>
+                                @{sn++;}
+                                @sn
+                            </td>
+                              <td>
+                                @Html.DisplayFor(modelItem => item.FileNumber)
+                            </td>
+                              <td>
+                                @Html.DisplayFor(modelItem => item.IPPIS_NO)
+                            </td>
+                            <td>
+                                <a asp-page="./Details" asp-route-id="@item.Id">
+                                @Html.DisplayFor(modelItem => item.Title)
+                                @Html.DisplayFor(modelItem => item.Surname)
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                                @Html.DisplayFor(modelItem => item.OtherName)
+                                </a>
+                            </td>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserStatus)
+                            </td>
+                           
+                          @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {*@
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-success">Action</button>
+
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-success dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-expanded="false">
+                                            </button>
+                                            <div class="dropdown-menu" style="">
+
+                                                <a class="dropdown-item" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                                                @*<a class="dropdown-item" asp-page="./Details" asp-route-id="@item.Id">Details</a>*@
+                                                @*<a class="dropdown-item" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>*@
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            @*}*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

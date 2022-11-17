@@ -1,0 +1,141 @@
+﻿@page
+@model Exwhyzee.Contribution.Web.Areas.Dashboard.Pages.AccountsPage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title">ADD A NEW CONTRIBUTOR</h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Input.Title" class="control-label"></label>
+                        <select asp-for="Input.Title" class="form-control" required="required">
+
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Chief">Chief</option>
+                            <option value="Alhaji">Alhaji</option>
+                            <option value="Mallam">Mallam</option>
+                            <option value="Ambassador">Ambassador</option>
+                            <option value="Col.">Col.</option>
+                            <option value="Major General">Major General</option>
+                            <option value="Comrade">Comrade</option>
+                            <option value="Captain">Captain</option>
+                            <option value="Capt Navy.">Capt Navy.</option>
+                            <option value="Brig Gen.">Brig Gen.</option>
+                            <option value="Air Comdr.">Air Comdr.</option>
+                            <option value="AVM">AVM</option>
+                            <option value="Gp Capt.">Gp Capt.</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Engr.">Engr.</option>
+                            <option value="Pharm.">Pharm.</option>
+                            <option value="CP">CP</option>
+                            <option value="AIG">AIG</option>
+                            <option value="DIG">DIG</option>
+                            <option value="Prof.">Prof.</option>
+                            <option value="Barr.">Barr.</option>
+                            <option value="Hajiya">Hajiya</option>
+                            <option value="Prince">Prince</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Princess">Princess</option>
+                            <option value="Commodore">Commodore</option>
+                            <option value="Brig.">Brig.</option>
+                            <option value="Major">Major</option>
+                            <option value="Hon.">Hon.</option>
+                            <option value="Hon. Justice">Hon. Justice</option>
+                            <option value="HRH">HRH</option>
+
+
+                        </select>                               <span asp-validation-for="Input.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Surname" class="control-label"></label>
+                        <input asp-for="Input.Surname" class="form-control" />
+                        <span asp-validation-for="Input.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.FirstName" class="control-label"></label>
+                        <input asp-for="Input.FirstName" class="form-control" />
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.OtherName" class="control-label"></label>
+                        <input asp-for="Input.OtherName" class="form-control" />
+                        <span asp-validation-for="Input.OtherName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email" class="control-label"></label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Input.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.GenderStatus" class="control-label">Gender</label>
+                        @Html.DropDownListFor(model => model.Input.GenderStatus, new SelectList(Enum.GetValues(typeof(Exwhyzee.Contribution.Domain.Enums.GenderStatus))), new { @class = "form-control", required="required" })
+                        <span asp-validation-for="Input.GenderStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.FileNumber" class="control-label">File Number</label>
+                        <input asp-for="Input.FileNumber" class="form-control" />
+                        <span asp-validation-for="Input.FileNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.IPPIS_NO" class="control-label">IPPIS NO</label>
+                        <input asp-for="Input.IPPIS_NO" class="form-control" />
+                        <span asp-validation-for="Input.IPPIS_NO" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.UserStatus" class="control-label">Gender</label>
+                        @Html.DropDownListFor(model => model.Input.UserStatus, new SelectList(Enum.GetValues(typeof(Exwhyzee.Contribution.Domain.Enums.UserStatus))), new { @class = "form-control", required="required" })
+                        <span asp-validation-for="Input.UserStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                        <a asp-page="./Index" class="btn bg-gradient-warning btn-sm" style="float:right;">Back</a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- /.row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            //$('.select2').select2()
+
+        }
+    </script>
+
+    }

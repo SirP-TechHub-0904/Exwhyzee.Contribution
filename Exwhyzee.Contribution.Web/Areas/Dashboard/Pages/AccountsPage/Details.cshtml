@@ -1,0 +1,325 @@
+﻿@page
+@model Exwhyzee.Contribution.Web.Areas.Dashboard.Pages.AccountsPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+        hr {
+        margin-top: 0;
+        margin-bottom: 0;
+      
+    }
+
+</style>
+<div class="row">
+    <div class="col-md-12">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle"
+                         src="~/img/icon.jpg"
+                         alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center" style="font-size:29px;font-weight:900;">@Model.Profile.Fullname</h3>
+
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>00000</h3>
+
+                                <p>ACCOUNT</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>LOAN</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>0</h3>
+
+                                <p>GAURANTOR</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-person-add"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>65</h3>
+
+                                <p>TRASACTIONS</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                @*  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                            {*@
+                <div class="btn-group">
+                    <a asp-page="./Edit" asp-route-id="@Model.Profile.Id" class="btn btn-warning">Edit</a>
+                    <a asp-page="./UpdateEmail" asp-route-id="@Model.Profile.Id" class="btn btn-primary">Update Email</a>
+                    <a asp-page="./Permission" asp-route-id="@Model.Profile.Id" class="btn btn-success">Update Permission</a>
+                    <a asp-page="./ResetPassword" asp-route-id="@Model.Profile.Id" class="btn btn-danger">Reset Password</a>
+                    <a asp-page="./History" asp-route-id="@Model.Profile.Id" class="btn btn-success">Funds History</a>
+                    <a asp-page="./Papers" asp-route-id="@Model.Profile.Id" class="btn btn-primary">Papers Presented/Written</a>
+                    
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- About Me Box -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">About Me @Model.Profile.Fullname</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <strong><i class="fas fa-envelope mr-1"></i> Email</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.Email))
+                    {
+                        <span>@Model.Profile.Email</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-phone mr-1"></i> Phone Number</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.PhoneNumber))
+                    {
+                        <span>@Model.Profile.PhoneNumber</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-phone mr-1"></i>Alt Phone Number</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.AltPhoneNumber))
+                    {
+                        <span>@Model.Profile.AltPhoneNumber</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-user mr-1"></i>Gender Status</strong>
+
+                <p class="text-muted">
+                    <span>@Model.Profile.GenderStatus</span>
+
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-user mr-1"></i>Marital Status</strong>
+
+                <p class="text-muted">
+                    <span>@Model.Profile.MaritalStatus</span>
+
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-user mr-1"></i>Religion Status</strong>
+
+                <p class="text-muted">
+                    <span>@Model.Profile.ReligionStatus</span>
+
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-user mr-1"></i>DOB</strong>
+
+                <p class="text-muted">
+                    @if (Model.Profile.DOB != null){
+
+                        <span>@Model.Profile.DOB.Value</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Contact Address</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.ContactAddress))
+                    {
+                        <span>@Model.Profile.ContactAddress</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>Home Address</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.HomeAddress))
+                    {
+                        <span>@Model.Profile.HomeAddress</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-map-marker-alt mr-1"></i>LGA and State</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.LGA))
+                    {
+                        <span>@Model.Profile.LGA</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                    /
+                    @if (!String.IsNullOrEmpty(Model.Profile.State))
+                    {
+                        <span>@Model.Profile.State</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                
+
+
+                <strong><i class="fas fa-book mr-1"></i> Biography</strong>
+
+                <di class="text-muted text-justify">
+                    @Html.Raw(Model.Profile.Bio)
+                </di>
+
+                <hr>
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Emergency Contact</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <strong><i class="fas fa-user mr-1"></i> Emergency Contact Name</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.EmergencyContactName))
+                    {
+                        <span>@Model.Profile.EmergencyContactName</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-envelope mr-1"></i> Emergency Contact Email</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.EmergencyContactEmail))
+                    {
+                        <span>@Model.Profile.EmergencyContactEmail</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+                @*empty*@
+                <strong><i class="fas fa-phone mr-1"></i> Emergency Contact Phone</strong>
+
+                <p class="text-muted">
+                    @if (!String.IsNullOrEmpty(Model.Profile.EmergencyContactPhone))
+                    {
+                        <span>@Model.Profile.EmergencyContactPhone</span>
+                    }
+                    else
+                    {
+                        <span>NILL</span>
+                    }
+                </p>
+
+                <hr>
+               
+
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+    </div>
+</div>
